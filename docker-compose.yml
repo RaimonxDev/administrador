@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  psql_administrador:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=super_admin
+      - POSTGRES_PASSWORD=super_admin
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_administrador:/var/lib/postgresql/data
+volumes:
+  db_administrador:
+    driver: local
